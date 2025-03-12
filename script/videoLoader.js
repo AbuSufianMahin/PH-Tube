@@ -138,7 +138,7 @@ function displayCategoryVideo(categoryArr) {
                     </div>
                 </div>
                 <div class="flex justify-center mb-5">
-                    <button onclick="loadVideoDetails('${videoId}')" class="btn btn-wide hover:bg-red-500 hover:text-white">Show Details</button>
+                    <button onclick="" class="btn btn-wide hover:bg-red-500 hover:text-white">Show Details</button>
                 </div>
 
             </div>
