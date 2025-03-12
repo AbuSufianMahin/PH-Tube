@@ -7,8 +7,8 @@ function removeActiveButtons() {
 }
 
 
-function loadAllVideos() {
-    fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+function loadAllVideos(videoTitle = "") {
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${videoTitle}`)
         .then((promise) => promise.json())
         .then((data) => {
             removeActiveButtons();

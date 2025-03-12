@@ -34,22 +34,30 @@
 
 <body class="inter-regular bg-gray-100 min-h-screen">
     <header class="w-10/12 mx-auto">
-        <nav class="flex justify-between py-8 border-b-1 border-neutral-200">
+        <nav class="flex justify-between items-center gap-2 py-8 border-b-1 border-neutral-200">
             <div>
                 <img src="./design/Logo.png" alt="Logo">
             </div>
             <div>
-                <button class="btn">Sort by view</button>
+                <label class="input outline-none">
+                    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </g>
+                    </svg>
+                    <input id="search-box" type="search" required placeholder="Search" />
+                </label>
             </div>
             <div>
-                <button class="btn bg-red-500 text-white">Blog</button>
+                <button class="btn bg-red-500 text-white text-xs">Sort by view</button>
             </div>
         </nav>
     </header>
 
     <main>
         <!-- button categories -->
-        <section id="category-container" class="w-10/12 mx-auto my-8 flex justify-center gap-6">
+        <section id="category-container" class="w-10/12 mx-auto my-8 flex justify-center gap-4">
             <!-- 1 static button -->
             <div id="default-btn" onclick="loadAllVideos()" class="btn btn-sm active-btn">All</div>
 
@@ -86,6 +94,7 @@
 
     <script src="./script/categoryButtonLoader.js"></script>
     <script src="./script/videoLoader.js"></script>
+    <script src="script\search.js"></script>
 </body>
 
 </html>
