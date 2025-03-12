@@ -91,7 +91,7 @@ function displayCategoryVideo(categoryArr) {
     if (categoryArr.length === 0) {
         videoContainer.innerHTML = `
         <div class="col-span-4">
-            <div class="mt-20 max-w-96 mx-auto flex flex-col justify-center items-center">
+            <div class="mt-40 max-w-96 mx-auto flex flex-col justify-center items-center">
                 <img src="./design/Icon.png" alt="">
                 <p class="text-3xl font-bold text-center">Oops!! Sorry, There is no content here</p>
             </div>
