@@ -85,6 +85,18 @@ function displayCategoryVideo(categoryArr) {
     const videoContainer = document.getElementById("video-container");
     videoContainer.innerHTML = "";
 
+    if (categoryArr.length===0){
+        videoContainer.innerHTML = `
+        <div class="col-span-4">
+            <div class="mt-20 max-w-96 mx-auto flex flex-col justify-center items-center">
+                <img src="./design/Icon.png" alt="">
+                <p class="text-3xl font-bold text-center">Oops!! Sorry, There is no content here</p>
+            </div>
+        </div>
+        `
+        return;
+    }
+
     for (let videoDetails of categoryArr) {
         const videoTitle = videoDetails["title"];
         const thumbnailPic = videoDetails["thumbnail"];
