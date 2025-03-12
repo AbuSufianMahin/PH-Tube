@@ -138,7 +138,7 @@ function displayCategoryVideo(categoryArr) {
                     </div>
                 </div>
                 <div class="flex justify-center mb-5">
-                    <button onclick="" class="btn btn-wide hover:bg-red-500 hover:text-white">Show Details</button>
+                    <button onclick="loadVideoDetails('${videoId}')" class="btn btn-wide hover:bg-red-500 hover:text-white">Show Details</button>
                 </div>
 
             </div>
@@ -153,6 +153,8 @@ function loadVideoDetails(videoId) {
     fetch(`https://openapi.programming-hero.com/api/phero-tube/video/${videoId}`)
         .then((promise) => promise.json())
         .then((data) => displayVideoDetails(data.video))
+
+    console.log("CLICKED")
 }
 
 function displayVideoDetails(videoDetailsObj){
@@ -162,6 +164,9 @@ function displayVideoDetails(videoDetailsObj){
     const description = videoDetailsObj.description;
 
     const detailsContainer = document.getElementById("details-container");
+    document.getElementById("video_description_modal").showModal();
+
+
     detailsContainer.innerHTML = `
     <div class="card bg-base-100 image-full shadow-sm">
         <figure>
@@ -173,7 +178,7 @@ function displayVideoDetails(videoDetailsObj){
     </div>
     `
 
-    document.getElementById("video_description_modal").showModal();
+    
 }
 
 loadAllVideos();
