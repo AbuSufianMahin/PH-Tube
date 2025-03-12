@@ -21,7 +21,7 @@ function showCatagories(categoryArr){
         const categoryName = catName.category;
         const catId = catName.category_id;
         catDiv.innerHTML = `
-        <div onclick="loadCategoryVideos(${catId})" class="btn btn-sm hover:bg-red-500 hover:text-white">${categoryName}</div> 
+        <div onclick="loadCategoryVideos(${catId})" id="btn-${catId}" class="btn btn-sm hover:bg-red-500 hover:text-white">${categoryName}</div> 
         `
         categoryContainer.appendChild(catDiv)
     }
