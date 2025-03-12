@@ -19,8 +19,9 @@ function showCatagories(categoryArr){
         
         // putting a buttton inside the individual category div (child element)
         const categoryName = catName.category;
+        const catId = catName.category_id;
         catDiv.innerHTML = `
-        <div class="btn btn-sm hover:bg-red-500 hover:text-white">${categoryName}</div> 
+        <div onclick="loadCategoryVideos(${catId})" class="btn btn-sm hover:bg-red-500 hover:text-white">${categoryName}</div> 
         `
         categoryContainer.appendChild(catDiv)
     }
