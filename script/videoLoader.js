@@ -29,6 +29,7 @@ function displayAllVideo(videoArr) {
         const authorPic = videoDetails["authors"][0]["profile_picture"];
         const authorName = videoDetails["authors"][0]["profile_name"];
         const viewCount = videoDetails["others"]["views"];
+        const verified = videoDetails["authors"][0]["verified"];
 
         // console.log(videoArr.)
         const videoCard = document.createElement("div");
@@ -37,7 +38,7 @@ function displayAllVideo(videoArr) {
         <div class="card bg-base-100">
 
             <div class="rounded-lg overflow-hidden">
-                <img class="w-full h-56 object-cover" src="${thumbnailPic}" alt="Shoes">
+                <img class="w-full h-56 object-cover" src="${thumbnailPic}" alt="Thumbnail">
             </div>
 
             <div>
@@ -51,7 +52,7 @@ function displayAllVideo(videoArr) {
                         <h2 class="card-title leading-6">${videoTitle}</h2>
                         <div class="flex gap-2 items-center">
                             <p class="opacity-70">${authorName}</p>
-                            <img src="./design/verified-icon.png" alt="Shoes">
+                            ${verified == true ? `<img src="./design/verified-icon.png" alt="verified">` : ``}
                         </div>    
                         <p class="opacity-70">${viewCount}</p>
 
@@ -85,7 +86,7 @@ function displayCategoryVideo(categoryArr) {
     const videoContainer = document.getElementById("video-container");
     videoContainer.innerHTML = "";
 
-    if (categoryArr.length===0){
+    if (categoryArr.length === 0) {
         videoContainer.innerHTML = `
         <div class="col-span-4">
             <div class="mt-20 max-w-96 mx-auto flex flex-col justify-center items-center">
@@ -103,6 +104,7 @@ function displayCategoryVideo(categoryArr) {
         const authorPic = videoDetails["authors"][0]["profile_picture"];
         const authorName = videoDetails["authors"][0]["profile_name"];
         const viewCount = videoDetails["others"]["views"];
+        const verified = videoDetails["authors"][0]["verified"];
 
         // console.log(videoArr.)
         const videoCard = document.createElement("div");
@@ -111,13 +113,13 @@ function displayCategoryVideo(categoryArr) {
         <div class="card bg-base-100">
 
             <div class="rounded-lg overflow-hidden">
-                <img class="w-full h-56 object-cover" src="${thumbnailPic}" alt="Shoes">
+                <img class="w-full h-56 object-cover" src="${thumbnailPic}" alt="Thumbnail">
             </div>
 
             <div>
                 <div class="flex items-start gap-3 py-5">
                     <div class="avatar">
-                        <div class="w-12 ring ring-gray-500 rounded-full ring-offset-2">
+                        <div class="w-10 ring ring-gray-500 rounded-full ring-offset-2">
                             <img src="${authorPic}" />
                         </div>
                     </div>
@@ -125,7 +127,7 @@ function displayCategoryVideo(categoryArr) {
                         <h2 class="card-title leading-6">${videoTitle}</h2>
                         <div class="flex gap-2 items-center">
                             <p class="opacity-70">${authorName}</p>
-                            <img src="./design/verified-icon.png" alt="Shoes">
+                            ${verified == true ? `<img src="./design/verified-icon.png" alt="verified">` : ``}
                         </div>    
                         <p class="opacity-70">${viewCount}</p>
 
