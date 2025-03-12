@@ -30,19 +30,20 @@ function displayAllVideo(videoArr) {
         const authorName = videoDetails["authors"][0]["profile_name"];
         const viewCount = videoDetails["others"]["views"];
         const verified = videoDetails["authors"][0]["verified"];
+        const videoId = videoDetails["video_id"];
 
         // console.log(videoArr.)
         const videoCard = document.createElement("div");
 
         videoCard.innerHTML = `
-        <div class="card bg-base-100">
+        <div class="card bg-base-100 shadow-lg">
 
             <div class="rounded-lg overflow-hidden">
                 <img class="w-full h-56 object-cover" src="${thumbnailPic}" alt="Thumbnail">
             </div>
 
             <div>
-                <div class="flex items-start gap-3 py-5">
+                <div class="flex items-start gap-3 py-5 px-2">
                     <div class="avatar">
                         <div class="w-10 ring ring-gray-500 rounded-full ring-offset-2">
                             <img src="${authorPic}" />
@@ -55,11 +56,12 @@ function displayAllVideo(videoArr) {
                             ${verified == true ? `<img src="./design/verified-icon.png" alt="verified">` : ``}
                         </div>    
                         <p class="opacity-70">${viewCount}</p>
-
+                        
                     </div>
-
                 </div>
-
+                <div class="flex justify-center mb-5">
+                    <button onclick="loadVideoDetails('${videoId}')" class="btn btn-wide hover:bg-red-500 hover:text-white">Show Details</button>
+                </div>
             </div>
         </div>
         `
@@ -106,18 +108,20 @@ function displayCategoryVideo(categoryArr) {
         const viewCount = videoDetails["others"]["views"];
         const verified = videoDetails["authors"][0]["verified"];
 
-        // console.log(videoArr.)
+        const videoId = videoDetails["video_id"];
+
+        // console.log(videoId)
         const videoCard = document.createElement("div");
 
         videoCard.innerHTML = `
-        <div class="card bg-base-100">
+        <div class="card bg-base-100 shadow-lg">
 
             <div class="rounded-lg overflow-hidden">
                 <img class="w-full h-56 object-cover" src="${thumbnailPic}" alt="Thumbnail">
             </div>
 
             <div>
-                <div class="flex items-start gap-3 py-5">
+                <div class="flex items-start gap-3 py-5 px-2">
                     <div class="avatar">
                         <div class="w-10 ring ring-gray-500 rounded-full ring-offset-2">
                             <img src="${authorPic}" />
@@ -132,7 +136,9 @@ function displayCategoryVideo(categoryArr) {
                         <p class="opacity-70">${viewCount}</p>
 
                     </div>
-
+                </div>
+                <div class="flex justify-center mb-5">
+                    <button onclick="loadVideoDetails('${videoId}')" class="btn btn-wide hover:bg-red-500 hover:text-white">Show Details</button>
                 </div>
 
             </div>
@@ -142,5 +148,32 @@ function displayCategoryVideo(categoryArr) {
     }
 }
 
+function loadVideoDetails(videoId) {
+    // console.log(videoId);
+    fetch(`https://openapi.programming-hero.com/api/phero-tube/video/${videoId}`)
+        .then((promise) => promise.json())
+        .then((data) => displayVideoDetails(data.video))
+}
+
+function displayVideoDetails(videoDetailsObj){
+    // console.log(videoDetailsObj)
+    const thumbnail = videoDetailsObj.thumbnail;
+    const title = videoDetailsObj.title;
+    const description = videoDetailsObj.description;
+
+    const detailsContainer = document.getElementById("details-container");
+    detailsContainer.innerHTML = `
+    <div class="card bg-base-100 image-full shadow-sm">
+        <figure>
+            <img class="object-cover" src="${thumbnail}" alt="Video description" /></figure>
+            <div class="card-body p-10 text-justify">
+                <h2 class="card-title text-4xl">${title}</h2>
+                <p>${description}</p>
+            </div>
+    </div>
+    `
+
+    document.getElementById("video_description_modal").showModal();
+}
 
 loadAllVideos();
