@@ -54,7 +54,7 @@
             </div>
         </nav>
     </header>
-
+    
     <main>
         <!-- button categories -->
         <section id="category-container" class="w-10/12 mx-auto my-8 flex justify-center gap-4">
@@ -65,6 +65,9 @@
 
         </section>
 
+        <div id="loading-spinner" class="text-center hidden">
+            <span class="loading loading-infinity loading-xl"></span>
+        </div>
 
         <!-- video container -->
         <section id="video-container"
@@ -91,10 +94,10 @@
 
     </footer>
 
-
+    <script src="./script/loader.js"></script>
     <script src="./script/categoryButtonLoader.js"></script>
     <script src="./script/videoLoader.js"></script>
-    <script src="script\search.js"></script>
+    
 </body>
 
 </html>

@@ -8,6 +8,7 @@ function removeActiveButtons() {
 
 
 function loadAllVideos(videoTitle = "") {
+    showLoader();
     fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${videoTitle}`)
         .then((promise) => promise.json())
         .then((data) => {
@@ -15,6 +16,7 @@ function loadAllVideos(videoTitle = "") {
             const clickedButton = document.getElementById(`default-btn`);
             clickedButton.classList.add('active-btn')
             displayAllVideo(data.videos)
+            removeLoader();
         })
 }
 
@@ -72,6 +74,7 @@ function displayAllVideo(videoArr) {
 
 
 function loadCategoryVideos(id) {
+    showLoader();
     fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
         .then((promise) => promise.json())
         .then((data) => {
@@ -79,6 +82,7 @@ function loadCategoryVideos(id) {
             const clickedButton = document.getElementById(`btn-${id}`);
             clickedButton.classList.add('active-btn')
             displayCategoryVideo(data.category);
+            removeLoader();
         })
 };
 
@@ -181,5 +185,11 @@ function displayVideoDetails(videoDetailsObj) {
 
 
 }
+
+
+document.getElementById("search-box").addEventListener("keyup", function(event){
+    const inputString = event.target.value;
+    loadAllVideos(inputString);
+})
 
 loadAllVideos();

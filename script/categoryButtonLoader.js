@@ -5,7 +5,7 @@ function loadCategories() {
         .then((res) => res.json())
 
         // displaying category arr from data using showCategories
-        .then((data) => showCatagories(data.categories))
+        .then((data) => showCatagories(data.categories));
 }
 
 function showCatagories(categoryArr){
