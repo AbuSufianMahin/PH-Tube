@@ -157,7 +157,7 @@ function loadVideoDetails(videoId) {
     console.log("CLICKED")
 }
 
-function displayVideoDetails(videoDetailsObj){
+function displayVideoDetails(videoDetailsObj) {
     // console.log(videoDetailsObj)
     const thumbnail = videoDetailsObj.thumbnail;
     const title = videoDetailsObj.title;
@@ -170,15 +170,16 @@ function displayVideoDetails(videoDetailsObj){
     detailsContainer.innerHTML = `
     <div class="card bg-base-100 image-full shadow-sm">
         <figure>
-            <img class="object-cover" src="${thumbnail}" alt="Video description" /></figure>
-            <div class="card-body p-10 text-justify">
-                <h2 class="card-title text-4xl">${title}</h2>
-                <p>${description}</p>
-            </div>
+            <img class="object-cover w-full" src="${thumbnail}" alt="Video description" />
+        </figure>
+        <div class="card-body p-10 text-justify">
+            <h2 class="card-title text-4xl">${title}</h2>
+            <p>${description}</p>
+        </div>
     </div>
     `
 
-    
+
 }
 
 loadAllVideos();
